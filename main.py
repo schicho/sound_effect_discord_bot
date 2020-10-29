@@ -25,5 +25,3 @@ if __name__ == "__main__":
     except LoginFailure:
         print("Error: token is not valid.\nCould not start bot.")
 
-
-
