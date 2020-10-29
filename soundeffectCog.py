@@ -27,7 +27,9 @@ class SoundEffects(commands.Cog):
             await ctx.send("Can't find the sound effect you asked for!")
             return
 
-        audio_source = discord.FFmpegPCMAudio("soundeffects/" + random.choice(files))
+        sound_file = "soundeffects/" + random.choice(files)
+        print("Playing", sound_file, "for user", ctx.author)
+        audio_source = discord.FFmpegPCMAudio(sound_file)
 
         ctx.voice_client.play(audio_source)
 
@@ -35,7 +37,7 @@ class SoundEffects(commands.Cog):
     @commands.command()
     async def stop(self, ctx):
         """Stops and disconnects the bot from voice"""
-
+        print("Leaving voice channel.")
         await ctx.voice_client.disconnect()
 
     @se.before_invoke
